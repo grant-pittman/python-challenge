@@ -2,13 +2,13 @@
 import os
 import csv
 
-#find the path to the buget data
+#find the path to the election data
 csvpath = os.path.join('Resources', 'election_data.csv')
 
 #declare variables and lists needed to solve the challenge
 vote_counter = 0
 candidate_list = []
-candidate_votes = [0,0,0,0]
+candidate_vote = []
 percentages = []
 
 #open the csv file
@@ -20,83 +20,62 @@ with open(csvpath) as csvfile:
 
     #iterate through the rows to calculate vote_counter and add values to candidate_list
     for row in csvreader:
+        #begings to count up the total votes for each row in the CSV file
         vote_counter = vote_counter + 1
-        candidate_list.append(row[2])
-    
-    #change candidate_list to a set to reduce to only unique values
-    candidate_set = set(candidate_list)
-
-#change the set back into a simplified list
-new_candidate_list = list(candidate_set)
-
-#open the csv file
-with open(csvpath) as csvfile:
-
-    csvreader = csv.reader(csvfile, delimiter=',')
-    #Skip the header label to iterate only through the needed row values
-    csv_header = next(csvreader)
-
-    #iterate through the rows to tally the votes for each candidate 
-    for row in csvreader:
-        if row[2] == new_candidate_list[0]:
-            candidate_votes[0] = candidate_votes[0] + 1
-
-        elif row[2] == new_candidate_list[1]:
-            candidate_votes[1] = candidate_votes[1] + 1
         
-        elif row[2] == new_candidate_list[2]:
-            candidate_votes[2] = candidate_votes[2] + 1
-            
-        elif row[2] == new_candidate_list[3]:
-            candidate_votes[3] = candidate_votes[3] + 1
+        #sets the current candidate equal to the current row
+        current_candidate = row[2]
 
-#iterate through candidate votes to calculate the percentage of total votes for each candidate 
-for vote in candidate_votes: 
-    percentages.append(round(((vote/vote_counter)*100),2))
+        #checks to see if the current candidate is in the candidate list yet
+        if current_candidate in candidate_list:
+            vote_index = candidate_list.index(current_candidate)
+            candidate_vote[vote_index] = candidate_vote[vote_index] + 1
+        
+        #if the current candidate is not yet in the list, then append them and also start counting their total votes at 1
+        else:
+            candidate_list.append(current_candidate)
+            candidate_vote.append(1)
 
-#below works but missing percentages
-results = {new_candidate_list[i]:candidate_votes[i] for i in range(len(new_candidate_list))}
+    #set a placeholder value for the current highest amount of votes
+    place_holder = candidate_vote[0]
+    for vote in candidate_vote: 
+        #calculates the percentage of total votes for each candidate
+        percentages.append(round(((vote/vote_counter)*100),2))
+        #if the next candidate has more votes then the current candidate, then declare them the winner
+        if vote > place_holder:
+            place_holder = candidate_vote[vote]
+        else:
+            winner_index = candidate_vote.index(place_holder)
+            winner = candidate_list[winner_index]
 
-#this is not working yet. I think it's the right way to solve the problem, but I have another less pretty solution below. 
-# results = {
-#     new_candidate_list[i]: {
-#         candidate_votes[i] for i in range(len(new_candidate_list)),
-#         percentages[i] for i in range(len(new_candidate_list))
-#         } 
-# }
 
 #Prints the Output of the Election Results
 print("Election Results")
 print("________________________")
 print(f'Total Votes: {vote_counter}')
 print("________________________")
-print(str(new_candidate_list[0]) + ": " + str(percentages [0]) + "%" + " (" + str(candidate_votes [0]) + ")")
-print(str(new_candidate_list[1]) + ": " + str(percentages [1]) + "%" + " (" + str(candidate_votes [1]) + ")")
-print(str(new_candidate_list[2]) + ": " + str(percentages [2]) + "%" + " (" + str(candidate_votes [2]) + ")")
-print(str(new_candidate_list[3]) + ": " + str(percentages [3]) + "%" + " (" + str(candidate_votes [3]) + ")")
+for i in range(len(candidate_list)):
+   print(f'{candidate_list[i]} : {percentages[i]} % ({candidate_vote[i]})')
 print("________________________")
-print("Winner: " + str(new_candidate_list[candidate_votes.index(max(candidate_votes))]))
+print(f'Winner: {winner}')
 print("________________________")
 
+  
 output_path = os.path.join("output", "election_results.txt")
 
 with open(output_path,"w") as file:
     
-# Write methods to print to Financial_Analysis_Summary 
+#Write methods to print to election_results.txt
     file.write("Election Results")
     file.write("\n")
     file.write(f'Total Votes: {vote_counter}')
     file.write("\n")
     file.write("________________________")
     file.write("\n")
-    file.write(str(new_candidate_list[0]) + ": " + str(percentages [0]) + "%" + " (" + str(candidate_votes [0]) + ")")
-    file.write("\n")
-    file.write(str(new_candidate_list[1]) + ": " + str(percentages [1]) + "%" + " (" + str(candidate_votes [1]) + ")")
-    file.write("\n")
-    file.write(str(new_candidate_list[2]) + ": " + str(percentages [2]) + "%" + " (" + str(candidate_votes [2]) + ")")
-    file.write("\n")
-    file.write(str(new_candidate_list[3]) + ": " + str(percentages [3]) + "%" + " (" + str(candidate_votes [3]) + ")")   
+    for i in range(len(candidate_list)):
+        file.write(f'{candidate_list[i]} : {percentages[i]} % ({candidate_vote[i]})') 
+        file.write("\n")
     file.write("\n")
     file.write("________________________")
     file.write("\n")
-    file.write("Winner: " + str(new_candidate_list[candidate_votes.index(max(candidate_votes))]))
+    file.write(f'Winner: {winner}')
