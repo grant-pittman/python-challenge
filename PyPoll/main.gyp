@@ -49,6 +49,35 @@ with open(csvpath) as csvfile:
             winner = candidate_list[winner_index]
 
 
+#Prints the Output of the Election Results
+print("Election Results")
+print("________________________")
+print(f'Total Votes: {vote_counter}')
+print("________________________")
+for i in range(len(candidate_list)):
+   print(f'{candidate_list[i]} : {percentages[i]} % ({candidate_vote[i]})')
+print("________________________")
+print(f'Winner: {winner}')
+print("________________________")
 
+  
+output_path = os.path.join("output", "election_results.txt")
+
+with open(output_path,"w") as file:
+    
+#Write methods to print to election_results.txt
+    file.write("Election Results")
+    file.write("\n")
+    file.write(f'Total Votes: {vote_counter}')
+    file.write("\n")
+    file.write("________________________")
+    file.write("\n")
+    for i in range(len(candidate_list)):
+        file.write(f'{candidate_list[i]} : {percentages[i]} % ({candidate_vote[i]})') 
+        file.write("\n")
+    file.write("\n")
+    file.write("________________________")
+    file.write("\n")
+    file.write(f'Winner: {winner}')
   
 
