@@ -1,108 +1,87 @@
-# Python Homework - Py Me Up, Charlie
+# Py Me Up, Charlie - A Python Challenge <!-- omit in toc -->
+
+## Table of contents <!-- omit in toc -->
+- [Background](#background)
+- [PyBank](#pybank)
+  - [Instructions](#instructions)
+  - [Results](#results)
+- [PyPoll](#pypoll)
+  - [Instructions](#instructions-1)
+  - [Results](#results-1)
+
 
 ## Background
 
-Well... you've made it!
+Included in this repo are two challenges to demonstrate my skills in Python scripting. Both  challenges encompass a real-world situation where these skills come in handy.
 
-It's time to put away the Excel sheet and join the big leagues. Welcome to the world of programming with Python. In this homework assignment, you'll be using the concepts you've learned to complete **2** Python Challenges, PyBank and PyPoll.
-Both of these challenges encompasses a real-world situation where your newfound Python scripting skills can come in handy. These challenges are far from easy so expect some hard work ahead!
-
-### Before You Begin
-
-1. Create a new repository for this project called `python-challenge`. **Do not add this homework to an existing repository**.
-
-2. Clone the new repository to your computer.
-
-3. Inside your local git repository, create a directory for both of the  Python Challenges. Use folder names corresponding to the challenges: **PyBank** and  **PyPoll**.
-
-4. Inside of each folder that you just created, add a new file called `main.py`. This will be the main script to run for each analysis.
-
-5. Push the above changes to GitHub or GitLab.
 
 ## PyBank
 
-![Revenue](Images/revenue-per-lead.png)
+### Instructions
 
-* In this challenge, you are tasked with creating a Python script for analyzing the financial records of your company. You will give a set of financial data called [budget_data.csv](PyBank/Resources/budget_data.csv). The dataset is composed of two columns: `Date` and `Profit/Losses`. (Thankfully, your company has rather lax standards for accounting so the records are simple.)
+In this challenge, I am tasked to create a Python script for analyzig the financial records of my company. 
 
-* Your task is to create a Python script that analyzes the records to calculate each of the following:
+I am provided a csv dataset with with two columns: `Date` and `Profit/Losses`.
 
-  * The total number of months included in the dataset
+For the assignment I created a Python script that analyzes the records to calculate each of the following:
 
-  * The net total amount of "Profit/Losses" over the entire period
+ - Total number of months included in the dataset
 
-  * The average of the changes in "Profit/Losses" over the entire period
+ - The net total amount of "Profit" and "Losses" over the entire period.
 
-  * The greatest increase in profits (date and amount) over the entire period
+ - The average of the changes in "Profit" and "Losses" over the entire period.
 
-  * The greatest decrease in losses (date and amount) over the entire period
+ - The greatest increase in profits (date and amount) over the entire period.
 
-* As an example, your analysis should look similar to the one below:
+ - The greatest decrease in losses (date and amount) over the entire period.
 
-  ```text
-  Financial Analysis
-  ----------------------------
-  Total Months: 86
-  Total: $38382578
-  Average  Change: $-2315.12
-  Greatest Increase in Profits: Feb-2012 ($1926159)
-  Greatest Decrease in Profits: Sep-2013 ($-2196167)
-  ```
+### Results
 
-* In addition, your final script should both print the analysis to the terminal and export a text file with the results.
+Here are the results from my effort:
+
+```text
+Financial Analysis
+ ----------------------------
+Total Months: 86
+Total Revenue: $38,382,578.00
+Average Revenue Change: $-2,315.12
+Greatest Increase in Profits: Feb-2012 $1,926,159.00
+Greatest Decrease in Profits: Sep-2013 $-2,196,167.00
+```
 
 ## PyPoll
 
-![Vote-Counting](Images/Vote_counting.png)
+### Instructions
 
-* In this challenge, you are tasked with helping a small, rural town modernize its vote-counting process. (Up until now, Uncle Cleetus had been trustfully tallying them one-by-one, but unfortunately, his concentration isn't what it used to be.)
+In this challenge, I am tasked with helping a small, rural town modernize its vote-counting process.
 
-* You will be give a set of poll data called [election_data.csv](PyPoll/Resources/election_data.csv). The dataset is composed of three columns: `Voter ID`, `County`, and `Candidate`. Your task is to create a Python script that analyzes the votes and calculates each of the following:
+I was given a csv dataset with three columns: `Voter Id`, `County` and `Candidate`.  My task is to create a Python script that analyzes the votes and calculates each of the following:
 
-  * The total number of votes cast
+ - The total number of votes cast
 
-  * A complete list of candidates who received votes
+ - A complete list of candidates who received votes
 
-  * The percentage of votes each candidate won
+ - The percentage of votes each candidate won.
 
-  * The total number of votes each candidate won
+ - The total number of votes each candidate won
 
-  * The winner of the election based on popular vote.
+ - The winner of the election based on the popular vote.
 
-* As an example, your analysis should look similar to the one below:
+### Results
 
-  ```text
-  Election Results
-  -------------------------
-  Total Votes: 3521001
-  -------------------------
-  Khan: 63.000% (2218231)
-  Correy: 20.000% (704200)
-  Li: 14.000% (492940)
-  O'Tooley: 3.000% (105630)
-  -------------------------
-  Winner: Khan
-  -------------------------
-  ```
+Here are the results that I found:
 
-* In addition, your final script should both print the analysis to the terminal and export a text file with the results.
+```text
+Election Results
+-------------------------
+Total Votes: 3,521,001
+-------------------------
+Khan: 63.000% (2,218,231)
+Correy: 20.000% (704,200)
+Li: 14.000% (492,940)
+O'Tooley: 3.000% (105,630)
+-------------------------
+Winner:  Khan
+-------------------------
+```
 
-## Hints and Considerations
-
-* Consider what we've learned so far. To date, we've learned how to import modules like `csv`; to read and write files in various formats; to store contents in variables, lists, and dictionaries; to iterate through basic data structures; and to debug along the way. Using what we've learned, try to break down you tasks into discrete mini-objectives. This will be a _much_ better course of action than attempting to Google Search for a miracle.
-
-* As you will discover, for some of these challenges, the datasets are quite large. This was done purposefully, as it showcases one of the limits of Excel-based analysis. While our first instinct, as data analysts, is often to head straight into Excel, creating scripts in Python can provide us with more robust options for handling "big data".
-
-* Your scripts should work for each dataset provided. Run your script for each dataset separately to make sure that the code works for different data.
-
-* Feel encouraged to work in groups, but don't shortchange yourself by copying someone else's work. You get what you put in, and the art of programming is extremely unforgiving to moochers. Dig your heels in, burn the night oil, and learn this while you can! These are skills that will pay dividends in your future career.
-
-* Start early, and reach out for help often! Challenge yourself to identify _specific_ questions for your instructors and TAs. Don't resign yourself to simply saying, "I'm totally lost." Come prepared to show your effort and thought patterns, we'll be happy to help along the way.
-
-* Always commit your work and back it up with GitHub pushes. You don't want to lose hours of your work because you didn't push it to GitHub every half hour or so.
-
-  * **Commit often**.
-
-## Copyright
-
-Trilogy Education Services © 2019. All Rights Reserved.
