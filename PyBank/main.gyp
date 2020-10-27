@@ -26,6 +26,14 @@ with open(csvpath) as csvfile:
     for i in range(len(total_profit)-1):
         monthly_profit_change.append(total_profit[i+1]-total_profit[i])
 
+#min/max functions determine the largest and smallest value in the list monthly_profit_change
+greatest_increase = max(monthly_profit_change)
+greatest_decrease = min(monthly_profit_change)
+
+#referencing the index position in monthly profit changes to find the position of the month in question
+greatest_increase_month = total_months[(monthly_profit_change.index(greatest_increase)+1)]
+greatest_decrease_month = total_months[(monthly_profit_change.index(greatest_decrease)+1)]
+
 
 
 
