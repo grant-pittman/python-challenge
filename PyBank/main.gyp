@@ -34,3 +34,31 @@ greatest_decrease = min(monthly_profit_change)
 greatest_increase_month = total_months[(monthly_profit_change.index(greatest_increase)+1)]
 greatest_decrease_month = total_months[(monthly_profit_change.index(greatest_decrease)+1)]
 
+#print out the financial statement
+print("Financial Analysis")
+print("_________________________")
+print(f"Total Months: {len(total_months)}")
+print(f"Total Profit: ${sum(total_revenue)}")
+print(f"Average Revenue Change: ${round(sum(monthly_profit_change)/len(monthly_profit_change),2)}")
+print(f"Greatest Increase in Profits:{greatest_increase_month} (${greatest_increase})")
+print(f"Greatest Decrease in Profits:{greatest_decrease_month} (${greatest_decrease})")
+
+# Open the file using "write" mode. Specify the variable to hold the contents
+output_path = os.path.join("output", "financial_analysis.txt")
+
+with open(output_path,"w") as file:
+    
+# Write methods to print to Financial_Analysis_Summary 
+    file.write("Financial Analysis")
+    file.write("\n")
+    file.write("----------------------------")
+    file.write("\n")
+    file.write(f"Total Months: {len(total_months)}")
+    file.write("\n")
+    file.write(f"Total: ${sum(total_revenue)}")
+    file.write("\n")
+    file.write(f"Average Change: {round(sum(monthly_profit_change)/len(monthly_profit_change),2)}")
+    file.write("\n")
+    file.write(f"Greatest Increase in Profits:{greatest_increase_month} (${greatest_increase})")
+    file.write("\n")
+    file.write(f"Greatest Decrease in Profits:{greatest_decrease_month} (${greatest_decrease})")
